@@ -1,0 +1,26 @@
+_BASE_: "Base-RADM.yaml"
+MODEL:
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+  RADM:
+    withVTRAM: True
+    withGRAM: True
+    NUM_PROPOSALS: 100
+    NUM_CLASSES: 4
+    NMS_THRESH: 0.15
+    CLASS_THRESH: 0.25
+DATASETS:
+  TEXT_FEATURE_PATH: '${yourPath}/DatasetRoot/text_features'
+  DATASET_PATH: '${yourPath}/DatasetRoot'
+  TRAIN: ("layout_train",)
+  TEST:  ("layout_val",)
+SOLVER:
+  STEPS: (150000, 220000)
+  MAX_ITER: 250000
+INPUT:
+  CROP:
+    ENABLED: False
+  FORMAT: "RGB"
+OUTPUT_DIR: "./output"
+
